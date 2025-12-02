@@ -58,12 +58,12 @@ conn.commit()
 
 # READ - Lê os dados da tabela
 cursor.execute("SELECT id, nome, idade FROM estudantes")
-cursor.execute("SELECT id, nome_disciplina, estudante_id FROM disciplinas")
-
-
-# O método fetchall() recupera todas as linhas do resultado da consulta
 estudantes = cursor.fetchall()
+
+cursor.execute("SELECT id, nome_disciplina, estudante_id FROM disciplinas")
 disciplinas = cursor.fetchall()
+# O método fetchall() recupera todas as linhas do resultado da consulta
+
 
 print("--- Estudantes ---")
 for estudante in estudantes:
@@ -104,16 +104,12 @@ conn = sqlite3.connect("escola.db")
 conn.execute("PRAGMA foreign_keys = ON;")
 cursor = conn.cursor()
 
-
-# Habilitar Foreign Keys é crucial, especialmente para DELETE
-cursor.execute("PRAGMA foreign_keys = ON;")
-
 cursor.execute(
     """
     DELETE FROM estudantes 
     WHERE id = ?
     """,
-    (1,),
+    (id_estudante,),
 )
 
 conn.commit()
