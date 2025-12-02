@@ -8,10 +8,11 @@ cursor = com.cursor()
 # Executa comandos SQL para criar uma tabela (se não existir)
 cursor.execute(
     """
-    CREATE TABLE IF NOT EXISTS estudantes (
+    CREATE TABLE IF NOT EXISTS disciplinas (
         id INTEGER PRIMARY KEY,
-        nome TEXT,
-        idade INTEGER
+        nome_disciplina TEXT,
+        estudante_id INTEGER
+        FOREIGN KEY (estudante_id) REFERENCES estudantes(id)
     )
 """
 )
