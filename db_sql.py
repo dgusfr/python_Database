@@ -5,7 +5,7 @@ com = sqlite3.connect("escola.db")
 cursor = com.cursor()
 
 # CRUD - Create, Read, Update, Delete
-# Executa um comando SQL para criar uma tabela (se não existir)
+# Executa comandos SQL para criar uma tabela (se não existir)
 cursor.execute(
     """
     CREATE TABLE IF NOT EXISTS estudantes (
