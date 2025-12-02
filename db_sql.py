@@ -4,6 +4,7 @@ import sqlite3
 com = sqlite3.connect("escola.db")
 cursor = com.cursor()
 
+# CRUD - Create, Read, Update, Delete
 # Executa um comando SQL para criar uma tabela (se não existir)
 cursor.execute(
     """
@@ -15,7 +16,7 @@ cursor.execute(
 """
 )
 
-# Insere dados na tabela
+# Create - Insere dados na tabela
 cursor.execute(
     """
     INSERT INTO estudantes (nome, idade) VALUES ('João', 20)
