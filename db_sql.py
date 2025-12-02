@@ -2,7 +2,9 @@ import sqlite3
 
 # Conecta ao banco de dados (cria o arquivo se não existir)
 conn = sqlite3.connect("escola.db")
+conn.execute("PRAGMA foreign_keys = ON;")
 cursor = conn.cursor()
+
 
 # CRUD - Create, Read, Update, Delete
 # Executa comandos SQL para criar uma tabela (se não existir)
@@ -22,7 +24,7 @@ cursor.execute(
         id INTEGER PRIMARY KEY,
         nome_disciplina TEXT,
         estudante_id INTEGER,
-        FOREIGN KEY (estudante_id) REFERENCES estudantes(id)
+        FOREIGN KEY (estudante_id) REFERENCES estudantes(id) ON DELETE SET NULL
     )
 """
 )
@@ -56,13 +58,20 @@ conn.commit()
 
 # READ - Lê os dados da tabela
 cursor.execute("SELECT id, nome, idade FROM estudantes")
+cursor.execute("SELECT id, nome_disciplina, estudante_id FROM disciplinas")
+
 
 # O método fetchall() recupera todas as linhas do resultado da consulta
 estudantes = cursor.fetchall()
+disciplinas = cursor.fetchall()
 
 print("--- Estudantes ---")
 for estudante in estudantes:
     print(f"ID: {estudante[0]}, Nome: {estudante[1]}, Idade: {estudante[2]}")
+
+print("\n--- Disciplinas ---")
+for disciplina in disciplinas:
+    print(f"ID: {disciplina[0]}, Nome da Disciplina: {disciplina[1]}")
 
 
 conn.close()
@@ -71,6 +80,7 @@ conn.close()
 
 # Update - Atualiza dados na tabela
 conn = sqlite3.connect("escola.db")
+conn.execute("PRAGMA foreign_keys = ON;")
 cursor = conn.cursor()
 
 
@@ -91,7 +101,9 @@ conn.close()
 
 # Delete - Remove dados da tabela
 conn = sqlite3.connect("escola.db")
+conn.execute("PRAGMA foreign_keys = ON;")
 cursor = conn.cursor()
+
 
 # Habilitar Foreign Keys é crucial, especialmente para DELETE
 cursor.execute("PRAGMA foreign_keys = ON;")
@@ -100,8 +112,8 @@ cursor.execute(
     """
     DELETE FROM estudantes 
     WHERE id = ?
-""",
-    (1),
+    """,
+    (1,),
 )
 
 conn.commit()
