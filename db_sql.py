@@ -1,8 +1,8 @@
 import sqlite3
 
 # Conecta ao banco de dados (cria o arquivo se não existir)
-com = sqlite3.connect("escola.db")
-cursor = com.cursor()
+conn = sqlite3.connect("escola.db")
+cursor = conn.cursor()
 
 # CRUD - Create, Read, Update, Delete
 # Executa comandos SQL para criar uma tabela (se não existir)
@@ -50,18 +50,19 @@ cursor.execute(
 
 
 # Confirma as alterações no banco de dados
-com.commit()
+conn.commit()
 
 # ------------------------------------------------------------
 
 # READ - Lê os dados da tabela
-cursor.execute(
-    """
-    SELECT * FROM estudantes
-"""
-)
-resultado = cursor.fetchall()
-print(resultado)
+cursor.execute("SELECT id, nome, idade FROM estudantes")
 
-# Fecha a conexão com o banco de dados
-com.close()
+# O método fetchall() recupera todas as linhas do resultado da consulta
+estudantes = cursor.fetchall()
+
+print("--- Estudantes ---")
+for estudante in estudantes:
+    print(f"ID: {estudante[0]}, Nome: {estudante[1]}, Idade: {estudante[2]}")
+
+
+conn.close()
