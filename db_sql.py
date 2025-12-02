@@ -66,3 +66,22 @@ for estudante in estudantes:
 
 
 conn.close()
+
+# ------------------------------------------------------------
+
+# Update - Atualiza dados na tabela
+conn = sqlite3.connect("escola.db")
+cursor = conn.cursor()
+
+cursor.execute(
+    """
+    UPDATE estudantes 
+    SET idade = ? 
+    WHERE nome = ?
+    """(
+        "Leandro", 24
+    )
+)
+
+conn.commit()
+conn.close()
