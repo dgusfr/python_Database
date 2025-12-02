@@ -73,15 +73,39 @@ conn.close()
 conn = sqlite3.connect("escola.db")
 cursor = conn.cursor()
 
+
 cursor.execute(
     """
     UPDATE estudantes 
     SET idade = ? 
     WHERE nome = ?
-    """(
-        "Leandro", 24
-    )
+    """,
+    (25, "Ana Silva"),
 )
 
 conn.commit()
+print(f"\nUpdate realizado. Linhas afetadas: {cursor.rowcount}")
+conn.close()
+
+# ------------------------------------------------------------
+
+# Delete - Remove dados da tabela
+conn = sqlite3.connect("escola.db")
+cursor = conn.cursor()
+
+# Habilitar Foreign Keys é crucial, especialmente para DELETE
+cursor.execute("PRAGMA foreign_keys = ON;")
+
+cursor.execute(
+    """
+    DELETE FROM estudantes 
+    WHERE id = ?
+""",
+    (1),
+)
+
+conn.commit()
+
+print(f"A operação DELETE removeu {cursor.rowcount} registro(s).")
+
 conn.close()
