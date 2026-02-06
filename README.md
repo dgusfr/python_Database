@@ -109,17 +109,15 @@ ___
 ### Plano de Estudos
 
 
-#### Fase 1: Fundamentos Críticos (A Base Obrigatória)
+#### Fase 1: Fundamentos Críticos 
 
-*Onde você deve gastar 60% do seu tempo inicial. Sem isso, ORMs viram uma armadilha.*
-
-* **Modelagem de Dados (Sua prioridade):**
-* **Entidades e Relacionamentos:** Diferenciar cardinalidades (, , ) e saber resolver o  com tabelas associativas.
+* **Modelagem de Dados:**
+* **Entidades e Relacionamentos:** Diferenciar cardinalidades (1:1, 1:N, N:N) e saber resolver o  com tabelas associativas.
 * **Normalização:** Dominar até a **3ª Forma Normal (3FN)** para evitar redundância e anomalias de inserção/deleção.
 * **Integridade Referencial:** Entender profundamente `FOREIGN KEY`, `CASCADE`, `RESTRICT` e `SET NULL`.
 
 
-* **SQL Puro (ANSI SQL):**
+* **SQL:**
 * **DDL vs DML:** Criação de estrutura (`CREATE`, `ALTER`) vs Manipulação (`INSERT`, `UPDATE`, `DELETE`).
 * **Joins:** Saber exatamente quando usar `INNER JOIN` (interseção) vs `LEFT JOIN` (preserva lado esquerdo) vs `FULL OUTER JOIN`.
 * **Agrupamento:** `GROUP BY`, `HAVING` e funções de agregação (`COUNT`, `SUM`, `AVG`).
