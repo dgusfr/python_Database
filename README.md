@@ -124,34 +124,17 @@ ___
 
 
 
-#### Fase 2: Integridade e Concorrência (Nível Intermediário)
-
-*Diferencia o júnior do pleno. Essencial para sistemas financeiros ou de estoque.*
+#### Fase 2: Integridade e Concorrência
 
 * **Transações (ACID):**
 * **Atomicidade:** "Tudo ou nada".
 * **Consistência:** O banco sempre muda de um estado válido para outro.
 * **Isolamento:** Níveis de isolamento (`Read Committed`, `Repeatable Read`, `Serializable`) e problemas de concorrência (Dirty Read, Phantom Read).
 * **Durabilidade:** Persistência garantida após o commit.
-
-
 * **Locks:** Diferença entre *Pessimistic Locking* (trava o registro) e *Optimistic Locking* (versionamento de linha).
 
-#### Fase 3: Performance (O "Pulo do Gato")
-
-*Tópico frequente em testes de performance e otimização.*
-
-* **Indexação:**
-* Como funcionam (B-Tree).
-* Diferença entre *Clustered Index* (ordena a tabela física) e *Non-Clustered Index*.
-* **Trade-off:** Índices aceleram leitura (`SELECT`) mas penalizam escrita (`INSERT/UPDATE`).
-
-
-* **Explain Analyze:** Saber ler o plano de execução da query para identificar gargalos (Full Table Scans).
 
 #### Fase 4: Integração com Backend (O seu dia a dia)
-
-*Conexão do Python com o Banco.*
 
 * **Drivers vs ORMs:**
 * **Driver:** Psycopg2 (PostgreSQL), PyMySQL.
