@@ -1,4 +1,3 @@
-Aqui está a sua apostila organizada e estruturada para leitura rápida e consulta técnica.
 # Banco de Dados
 
 ## Índice
@@ -95,7 +94,6 @@ O processo lógico para estruturar o banco:
 
 ---
 
-**Gostaria que eu gerasse um exemplo prático (SQL ou diagrama textual) aplicando esses conceitos para um cenário simples, como um sistema de Vendas?**
 
 *database.py:*  responsável por criar a conexão com o nosso banco de dados. Antes disso, precisamos criar o banco de dados no Postgres e também as credenciais para acessá-lo.
 
