@@ -156,36 +156,9 @@ ___
 
 ---
 
-### 📚 Recursos Recomendados
-
-Aqui estão as melhores fontes para cada tópico, filtradas por qualidade técnica.
-
-#### 1. Livros (Teoria Profunda)
-
-* **Para começar:** *"Introdução a Sistemas de Bancos de Dados"* (C.J. Date) ou *"Sistemas de Banco de Dados"* (Elmasri & Navathe) — *São bíblias acadêmicas. Use como consulta, não para leitura linear.*
-* **Para SQL Prático:** *"SQL Antipatterns"* (Bill Karwin) — *Ensina o que NÃO fazer, excelente para quem já sabe o básico.*
-* **Para Performance/Arquitetura (Nível Avançado):** *"Designing Data-Intensive Applications"* (Martin Kleppmann).  — *Este é considerado o melhor livro moderno sobre backend e dados. Leitura obrigatória para Pleno/Sênior.*
-
-#### 2. Cursos e Vídeos (Prática)
-
-* **Curso em Vídeo (Gustavo Guanabara):** Playlist de "Banco de Dados MySQL".
-* *Foco:* Fase 1 (Modelagem, Normalização, SQL básico). Didática imbatível para iniciantes.
 
 
-* **Fabio Akita (YouTube):** Procure os vídeos sobre "Bancos de Dados", "ORM" e "Concorrência".
-* *Foco:* Fase 2 e 4. Explicações técnicas sobre como o banco funciona "por baixo do capô".
-
-
-* **Boson Treinamentos (YouTube):**
-* *Foco:* SQL Puro e comandos específicos. Ótimo para consultas rápidas de sintaxe.
-
-
-* **Udemy/Alura (Roadmaps de Backend em Python):**
-* Procure módulos específicos de **SQLAlchemy** e **Alembic** para cobrir a Fase 4 dentro do ecossistema Python.
-
-
-
-#### 3. Prática Imediata (Sugestão de Exercício)
+#### Exercício
 
 Para consolidar o conhecimento das conversas anteriores:
 
