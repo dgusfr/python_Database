@@ -134,21 +134,20 @@ ___
 * **Locks:** Diferença entre *Pessimistic Locking* (trava o registro) e *Optimistic Locking* (versionamento de linha).
 
 
-#### Fase 4: Integração com Backend (O seu dia a dia)
+#### Fase 3: Integração com Backend 
 
 * **Drivers vs ORMs:**
 * **Driver:** Psycopg2 (PostgreSQL), PyMySQL.
 * **ORM:** SQLAlchemy (padrão ouro em Python), Django ORM. Entender o problema "N+1 selects".
 
 
-* **Migrations (Seu interesse - Alembic):**
+* **Migrations:**
 * Versionamento de schema.
 * Como fazer *downgrades* seguros.
 * Gerenciamento de conflitos de migração em times.
 
 
-
-#### Fase 5: Além do Relacional (NoSQL)
+#### Fase 4: Além do Relacional (NoSQL)
 
 *Para cenários específicos onde o SQL não escala bem.*
 
