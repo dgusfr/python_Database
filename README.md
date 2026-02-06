@@ -93,6 +93,8 @@ O processo lógico para estruturar o banco:
 3. **Estabelecimento de Relacionamentos:** Definição de como as tabelas se conectam e interagem entre si.
 
 ---
+___
+___
 
 
 *database.py:*  responsável por criar a conexão com o nosso banco de dados. Antes disso, precisamos criar o banco de dados no Postgres e também as credenciais para acessá-lo.
