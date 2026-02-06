@@ -104,3 +104,112 @@ ___
 *models.py:* definiremos as entidades da nossa aplicação. No nosso exemplo, as entidades são estudantes e matrículas. Portanto, os modelos que criaremos serão referentes a estudantes e matrículas.
 
 *esquemas.py:* Os esquemas são a parte da aplicação referente à validação dos dados. Eles definem o tipo de atributo que temos em cada entidade, como string, número, integer, etc. 
+
+
+### Plano de Estudos
+
+
+#### Fase 1: Fundamentos Críticos (A Base Obrigatória)
+
+*Onde você deve gastar 60% do seu tempo inicial. Sem isso, ORMs viram uma armadilha.*
+
+* **Modelagem de Dados (Sua prioridade):**
+* **Entidades e Relacionamentos:** Diferenciar cardinalidades (, , ) e saber resolver o  com tabelas associativas.
+* **Normalização:** Dominar até a **3ª Forma Normal (3FN)** para evitar redundância e anomalias de inserção/deleção.
+* **Integridade Referencial:** Entender profundamente `FOREIGN KEY`, `CASCADE`, `RESTRICT` e `SET NULL`.
+
+
+* **SQL Puro (ANSI SQL):**
+* **DDL vs DML:** Criação de estrutura (`CREATE`, `ALTER`) vs Manipulação (`INSERT`, `UPDATE`, `DELETE`).
+* **Joins:** Saber exatamente quando usar `INNER JOIN` (interseção) vs `LEFT JOIN` (preserva lado esquerdo) vs `FULL OUTER JOIN`.
+* **Agrupamento:** `GROUP BY`, `HAVING` e funções de agregação (`COUNT`, `SUM`, `AVG`).
+
+
+
+#### Fase 2: Integridade e Concorrência (Nível Intermediário)
+
+*Diferencia o júnior do pleno. Essencial para sistemas financeiros ou de estoque.*
+
+* **Transações (ACID):**
+* **Atomicidade:** "Tudo ou nada".
+* **Consistência:** O banco sempre muda de um estado válido para outro.
+* **Isolamento:** Níveis de isolamento (`Read Committed`, `Repeatable Read`, `Serializable`) e problemas de concorrência (Dirty Read, Phantom Read).
+* **Durabilidade:** Persistência garantida após o commit.
+
+
+* **Locks:** Diferença entre *Pessimistic Locking* (trava o registro) e *Optimistic Locking* (versionamento de linha).
+
+#### Fase 3: Performance (O "Pulo do Gato")
+
+*Tópico frequente em testes de performance e otimização.*
+
+* **Indexação:**
+* Como funcionam (B-Tree).
+* Diferença entre *Clustered Index* (ordena a tabela física) e *Non-Clustered Index*.
+* **Trade-off:** Índices aceleram leitura (`SELECT`) mas penalizam escrita (`INSERT/UPDATE`).
+
+
+* **Explain Analyze:** Saber ler o plano de execução da query para identificar gargalos (Full Table Scans).
+
+#### Fase 4: Integração com Backend (O seu dia a dia)
+
+*Conexão do Python com o Banco.*
+
+* **Drivers vs ORMs:**
+* **Driver:** Psycopg2 (PostgreSQL), PyMySQL.
+* **ORM:** SQLAlchemy (padrão ouro em Python), Django ORM. Entender o problema "N+1 selects".
+
+
+* **Migrations (Seu interesse - Alembic):**
+* Versionamento de schema.
+* Como fazer *downgrades* seguros.
+* Gerenciamento de conflitos de migração em times.
+
+
+
+#### Fase 5: Além do Relacional (NoSQL)
+
+*Para cenários específicos onde o SQL não escala bem.*
+
+* **Key-Value (Redis):** Essencial para **Cache** e filas simples.
+* **Document (MongoDB):** Para dados não estruturados ou schemaless. Entender quando desnormalizar é vantajoso.
+
+---
+
+### 📚 Recursos Recomendados
+
+Aqui estão as melhores fontes para cada tópico, filtradas por qualidade técnica.
+
+#### 1. Livros (Teoria Profunda)
+
+* **Para começar:** *"Introdução a Sistemas de Bancos de Dados"* (C.J. Date) ou *"Sistemas de Banco de Dados"* (Elmasri & Navathe) — *São bíblias acadêmicas. Use como consulta, não para leitura linear.*
+* **Para SQL Prático:** *"SQL Antipatterns"* (Bill Karwin) — *Ensina o que NÃO fazer, excelente para quem já sabe o básico.*
+* **Para Performance/Arquitetura (Nível Avançado):** *"Designing Data-Intensive Applications"* (Martin Kleppmann).  — *Este é considerado o melhor livro moderno sobre backend e dados. Leitura obrigatória para Pleno/Sênior.*
+
+#### 2. Cursos e Vídeos (Prática)
+
+* **Curso em Vídeo (Gustavo Guanabara):** Playlist de "Banco de Dados MySQL".
+* *Foco:* Fase 1 (Modelagem, Normalização, SQL básico). Didática imbatível para iniciantes.
+
+
+* **Fabio Akita (YouTube):** Procure os vídeos sobre "Bancos de Dados", "ORM" e "Concorrência".
+* *Foco:* Fase 2 e 4. Explicações técnicas sobre como o banco funciona "por baixo do capô".
+
+
+* **Boson Treinamentos (YouTube):**
+* *Foco:* SQL Puro e comandos específicos. Ótimo para consultas rápidas de sintaxe.
+
+
+* **Udemy/Alura (Roadmaps de Backend em Python):**
+* Procure módulos específicos de **SQLAlchemy** e **Alembic** para cobrir a Fase 4 dentro do ecossistema Python.
+
+
+
+#### 3. Prática Imediata (Sugestão de Exercício)
+
+Para consolidar o conhecimento das conversas anteriores:
+
+1. Crie um modelo físico de um sistema de pedidos (Clientes, Produtos, Pedidos, Itens do Pedido).
+2. Popule com dados fictícios.
+3. Crie uma query que traga: *Nome do Cliente, Data do Pedido e Valor Total*, usando `INNER JOIN` e `SUM/GROUP BY`.
+4. Use o **Alembic** para alterar a tabela de Clientes (ex: adicionar coluna "CPF") e aplique a migração.
