@@ -136,25 +136,13 @@ A "ponte" entre as tabelas é construída através de chaves:
 
 ---
 
-### Exemplo Prático de Diagrama (Descrição DER)
+### Exemplo Prático de Diagrama (DER)
 
 **Cenário:** Sistema de Vendas Simples.
 **Entidades:** `Clientes` e `Pedidos`.
 **Relacionamento:** Um cliente pode fazer vários pedidos, mas um pedido pertence a um único cliente (1:N).
 
-#### Estrutura das Tabelas:
-
-**1. Tabela A: `Clientes` (Entidade Forte/Pai)**
-
-* Esta tabela armazena os dados cadastrais.
-* **PK (Chave Primária):** `id_cliente` (Ex: 101)
-* **Atributos:** `nome`, `cpf`.
-
-**2. Tabela B: `Pedidos` (Entidade Fraca/Filho)**
-
-* Esta tabela armazena as transações de compra.
-* **PK (Chave Primária):** `id_pedido` (Ex: 5002) — Identifica a compra.
-* **FK (Chave Estrangeira):** `id_cliente_fk` (Ex: 101) — Identifica quem comprou.
+<img src="diagrama_relacionamento.png" alt="Diagrama de Relacionamento entre Clientes e Pedidos" width="400"/>
 
 #### Como a conexão acontece:
 
