@@ -7,6 +7,12 @@
 3. **O Modelo Relacional**
 4. **Níveis de Abstração**
 5. **Etapas da Modelagem**
+6. **Relacionamentos**
+   - Grau do Relacionamento
+   - Chaves
+   - Cardinalidade
+   - Classificação dos Relacionamentos
+7. **Restrições de Integridade**
 
 ---
 
