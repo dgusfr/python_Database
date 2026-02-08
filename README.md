@@ -142,13 +142,12 @@ A "ponte" entre as tabelas é construída através de chaves:
 **Entidades:** `Clientes` e `Pedidos`.
 **Relacionamento:** Um cliente pode fazer vários pedidos, mas um pedido pertence a um único cliente (1:N).
 
-<img src="diagrama_relacionamento.png" alt="Diagrama de Relacionamento entre Clientes e Pedidos" width="400"/>
+<img src="images/diagrama_relacionamento.png" alt="Diagrama de Relacionamento entre Clientes e Pedidos" width="400"/>
 
-#### Como a conexão acontece:
 
-No diagrama, uma linha conecta a tabela `Clientes` à tabela `Pedidos`.
+No diagrama a cima determinamos a relação entre a tabela `Clientes` à tabela `Pedidos`.
 
-1. **A Ligação:** A coluna `id_cliente_fk` dentro da tabela `Pedidos` não aceita qualquer número; ela só aceita valores que já existam na coluna `id_cliente` da tabela `Clientes`.
+1. **A Ligação:** A coluna `id_cliente` dentro da tabela `Pedidos` não aceita qualquer número; ela só aceita valores que já existam na coluna `id_cliente` da tabela `Clientes`.
 2. **A Leitura:** Quando o sistema lê o Pedido 5002, ele encontra a FK com valor "101". O banco de dados vai até a tabela `Clientes`, procura a PK "101" e retorna o nome "João Silva".
 3. **Integridade:** Isso impede que um pedido seja criado para um cliente que não existe.
 
