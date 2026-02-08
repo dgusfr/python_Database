@@ -5,6 +5,7 @@
 1. **Introdução**
 2. **Modelagem de Dados**
 3. **O Modelo Relacional**
+
 4. **Níveis de Abstração**
 5. **Etapas da Modelagem**
 6. **Relacionamentos**
@@ -78,7 +79,11 @@ Descreve as características das entidades.
 
 * **Função:** Permite cruzar dados para gerar informação (Ex: Saber "qual cliente comprou qual produto").
 
----
+____
+<br>
+<br>
+
+
 
 ## 4. Níveis de Abstração (Modelos)
 
@@ -88,7 +93,10 @@ A modelagem ocorre em três níveis progressivos de detalhe:
 2. **Modelo Lógico:** Implementação das estruturas (definição de tabelas, chaves primárias e estrangeiras).
 3. **Modelo Físico:** Script SQL e implementação final no SGBD (Sistema Gerenciador de Banco de Dados) específico.
 
----
+____
+<br>
+<br>
+
 
 ## 5. Etapas da Modelagem
 
@@ -98,8 +106,10 @@ O processo lógico para estruturar o banco:
 2. **Definição de Atributos:** Determinação das características e propriedades que definem cada entidade (as colunas).
 3. **Estabelecimento de Relacionamentos:** Definição de como as tabelas se conectam e interagem entre si.
 
----
-___
+____
+<br>
+<br>
+
 
 ## 6. Relacionamentos
 
@@ -127,6 +137,9 @@ O grau indica o número de entidades envolvidas em uma única associação.
 * Associação simultânea entre três entidades indispensáveis para o fato.
 * *Exemplo:* `Médico` *prescreve* `Medicamento` para `Paciente`.
 
+____
+<br>
+<br>
 
 
 ### 6.2. Chaves
@@ -136,7 +149,6 @@ A "ponte" entre as tabelas é construída através de chaves:
 * **Chave Primária (PK):** Identidade única do registro na tabela principal (Pai).
 * **Chave Estrangeira (FK):** Referência na tabela secundária (Filho) que aponta para a PK da tabela principal.
 
----
 
 ### Exemplo Prático de Diagrama (DER)
 
@@ -144,7 +156,7 @@ A "ponte" entre as tabelas é construída através de chaves:
 **Entidades:** `Clientes` e `Pedidos`.
 **Relacionamento:** Um cliente pode fazer vários pedidos, mas um pedido pertence a um único cliente (1:N), veremos cardinalidade mais adiante.
 
-<img src="images/diagrama_relacionamento.png" alt="Diagrama de Relacionamento entre Clientes e Pedidos" width="400"/>
+<img src="images/diagrama_relacionamento.png" alt="Diagrama de Relacionamento entre Clientes e Pedidos" width="1000"/>
 
 
 No diagrama a cima determinamos a relação entre a tabela `Clientes` à tabela `Pedidos`.
@@ -153,8 +165,11 @@ No diagrama a cima determinamos a relação entre a tabela `Clientes` à tabela 
 2. **A Leitura:** Quando o sistema lê o Pedido 5002, ele encontra a FK com valor "101". O banco de dados vai até a tabela `Clientes`, procura a PK "101" e retorna o nome "João Silva".
 3. **Integridade:** Isso impede que um pedido seja criado para um cliente que não existe.
 
----
----
+
+____
+<br>
+<br>
+
 
 ### 6.3 Cardinalidade
 
@@ -180,6 +195,8 @@ Define o número **mínimo** de instâncias que obrigatoriamente devem participa
 
 > **Importância:** Definir corretamente as cardinalidades (especialmente a máxima) é crucial para a fase de **Normalização** do banco de dados, evitando redundâncias e erros estruturais.
 
+____
+<br>
 
 ## 6.3.2 Notação 
 
@@ -198,7 +215,7 @@ Usa símbolos gráficos nas pontas das linhas de relacionamento:
 * **Círculo (O):** Representa "0".
 * **Pé de galinha (três traços):** Representa "Muitos" (N).
 
-<img src="images/crows_foot_notation.png" alt="Notação Pé de Galinha" width="400"/>
+<img src="images/crows_foot_notation.png" alt="Notação Pé de Galinha" width="1000"/>
 
 fonte: https://medium.com/@callista.m.azizah/crows-foot-erd-for-beginners-a-tutorial-1effc8a326c6
 
@@ -236,7 +253,12 @@ Uma instância da Entidade A se relaciona com **várias** da Entidade B, e uma i
 > * *Solução:* Durante a modelagem, cria-se uma **Entidade Associativa** (uma nova tabela intermediária) para quebrar o relacionamento N:N em dois relacionamentos 1:N.
 > * *Exemplo:* Cria-se a entidade "Cliente_Pacote" entre Cliente e Pacote.
 
----
+____
+<br>
+<br>
+
+
+
 
 ## 7. Restrições de Integridade
 
