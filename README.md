@@ -93,6 +93,92 @@ O processo lógico para estruturar o banco:
 3. **Estabelecimento de Relacionamentos:** Definição de como as tabelas se conectam e interagem entre si.
 
 ---
+
+
+Aqui está o tópico de Relacionamentos adicionado à estrutura da apostila, mantendo a formatação direta e técnica.
+
+---
+
+## 6. Relacionamentos
+
+O relacionamento é o terceiro pilar do Modelo Entidade-Relacionamento (MER), unindo as **Entidades** e os **Atributos**.
+
+* **Definição:** Estrutura que define a associação entre ocorrências de entidades.
+* **Função:** Conectar informações de tabelas distintas, transformando dados isolados em informação contextualizada.
+* **Objetivo:** Permitir consultas complexas (Joins) para responder perguntas de negócio (ex: "Quem comprou o quê?").
+
+### 6.1. Grau do Relacionamento
+
+O grau indica o número de entidades envolvidas em uma única associação.
+
+1. **Relacionamento Unário (Auto-relacionamento/Recursivo):**
+* Uma única entidade relaciona-se consigo mesma.
+* *Exemplo:* `Funcionário` *gerencia* `Funcionário`. (Um gerente é também um funcionário).
+
+
+2. **Relacionamento Binário (Grau 2):**
+* Associação entre duas entidades distintas. **É o padrão mais comum.**
+* *Exemplo:* `Cliente` *realiza* `Pedido`.
+
+
+3. **Relacionamento Ternário (Grau 3):**
+* Associação simultânea entre três entidades indispensáveis para o fato.
+* *Exemplo:* `Médico` *prescreve* `Medicamento` para `Paciente`.
+
+
+
+### 6.2. Chaves
+
+A "ponte" entre as tabelas é construída através de chaves:
+
+* **Chave Primária (PK):** Identidade única do registro na tabela principal (Pai).
+* **Chave Estrangeira (FK):** Referência na tabela secundária (Filho) que aponta para a PK da tabela principal.
+
+---
+
+### Exemplo Prático de Diagrama (Descrição DER)
+
+**Cenário:** Sistema de Vendas Simples.
+**Entidades:** `Clientes` e `Pedidos`.
+**Relacionamento:** Um cliente pode fazer vários pedidos, mas um pedido pertence a um único cliente (1:N).
+
+#### Estrutura das Tabelas:
+
+**1. Tabela A: `Clientes` (Entidade Forte/Pai)**
+
+* Esta tabela armazena os dados cadastrais.
+* **PK (Chave Primária):** `id_cliente` (Ex: 101)
+* **Atributos:** `nome`, `cpf`.
+
+**2. Tabela B: `Pedidos` (Entidade Fraca/Filho)**
+
+* Esta tabela armazena as transações de compra.
+* **PK (Chave Primária):** `id_pedido` (Ex: 5002) — Identifica a compra.
+* **FK (Chave Estrangeira):** `id_cliente_fk` (Ex: 101) — Identifica quem comprou.
+
+#### Como a conexão acontece:
+
+No diagrama, uma linha conecta a tabela `Clientes` à tabela `Pedidos`.
+
+1. **A Ligação:** A coluna `id_cliente_fk` dentro da tabela `Pedidos` não aceita qualquer número; ela só aceita valores que já existam na coluna `id_cliente` da tabela `Clientes`.
+2. **A Leitura:** Quando o sistema lê o Pedido 5002, ele encontra a FK com valor "101". O banco de dados vai até a tabela `Clientes`, procura a PK "101" e retorna o nome "João Silva".
+3. **Integridade:** Isso impede que um pedido seja criado para um cliente que não existe.
+
+---
+
+**Deseja adicionar o tópico sobre "Cardinalidade" (1:1, 1:N, N:N) agora para complementar este exemplo?**
+
+
+
+
+
+
+
+
+
+
+
+
 ___
 ___
 
