@@ -152,11 +152,94 @@ No diagrama a cima determinamos a relação entre a tabela `Clientes` à tabela 
 3. **Integridade:** Isso impede que um pedido seja criado para um cliente que não existe.
 
 ---
+---
 
-**Deseja adicionar o tópico sobre "Cardinalidade" (1:1, 1:N, N:N) agora para complementar este exemplo?**
+### 6.3 Cardinalidade
 
-___
-___
+A cardinalidade expressa a **quantidade de itens** (instâncias) de uma entidade que podem se relacionar com itens de outra entidade. 
+
+* **Pergunta chave:** "Dado um registro na Entidade A, com quantos registros da Entidade B ele pode ou deve se relacionar?" (e vice-versa).
+
+## 6.3.1 Tipos de Cardinalidade
+
+A cardinalidade é sempre analisada sob dois aspectos:
+
+### A. Cardinalidade Máxima
+
+Define o número **máximo** de instâncias que podem participar do relacionamento.
+
+* Geralmente representada por **1** (um) ou **N** (muitos/vários).
+
+### B. Cardinalidade Mínima
+
+Define o número **mínimo** de instâncias que obrigatoriamente devem participar do relacionamento.
+
+* Pode ser **0** (opcional - nenhuma participação obrigatória) ou **1** (obrigatório - pelo menos uma participação).
+
+> **Importância:** Definir corretamente as cardinalidades (especialmente a máxima) é crucial para a fase de **Normalização** do banco de dados, evitando redundâncias e erros estruturais.
+
+
+## 6.3.2 Notação (Como Representar)
+
+Existem diversas formas de representar a cardinalidade em diagramas. As mais comuns citadas são:
+
+### Notação de Peter Chen (Com parênteses)
+
+Os números são colocados ao lado das entidades no formato `(mínimo, máximo)`.
+
+* *Exemplo:* `(1,1)` significa Mínimo 1, Máximo 1.
+* *Exemplo:* `(0,N)` significa Mínimo 0, Máximo N (Muitos).
+
+### Notação Pé de Galinha (Crow's Foot)
+
+Usa símbolos gráficos nas pontas das linhas de relacionamento:
+
+* **Barra vertical (|):** Representa "1".
+* **Círculo (O):** Representa "0".
+* **Pé de galinha (três traços):** Representa "Muitos" (N).
+
+## 4. Classificação dos Relacionamentos
+
+Com base na cardinalidade máxima, os relacionamentos são classificados em três tipos principais:
+
+### 1. Relacionamento Um para Um (1:1)
+
+Uma instância da Entidade A se relaciona com **apenas uma** instância da Entidade B, e vice-versa.
+
+* *Exemplo:* **Professor** e **Armário**.
+* Um professor usa, no máximo, 1 armário.
+* Um armário é usado por, no máximo, 1 professor.
+
+
+
+### 2. Relacionamento Um para Muitos (1:N)
+
+Uma instância da Entidade A se relaciona com **várias** instâncias da Entidade B, mas uma instância da Entidade B se relaciona com **apenas uma** da Entidade A.
+
+* *Exemplo:* **Funcionário** e **Departamento**.
+* Um funcionário trabalha em 1 departamento.
+* Um departamento possui N (vários) funcionários.
+
+
+
+### 3. Relacionamento Muitos para Muitos (N:N)
+
+Uma instância da Entidade A se relaciona com **várias** da Entidade B, e uma instância da Entidade B também se relaciona com **várias** da Entidade A.
+
+* *Exemplo:* **Cliente** e **Pacote de Viagem**.
+* Um cliente pode comprar N pacotes.
+* Um pacote pode ser comprado por N clientes (ex: pacote promocional vendido para várias pessoas).
+
+
+
+> **Atenção Técnica:** Bancos de dados relacionais têm dificuldade em implementar relacionamentos **N:N** diretamente.
+> * *Solução:* Durante a modelagem, cria-se uma **Entidade Associativa** (uma nova tabela intermediária) para quebrar o relacionamento N:N em dois relacionamentos 1:N.
+> * *Exemplo:* Cria-se a entidade "Cliente_Pacote" entre Cliente e Pacote.
+> 
+> 
+
+---
+
 
 ## 7. Restrições de Integridade
 
