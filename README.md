@@ -93,11 +93,7 @@ O processo lógico para estruturar o banco:
 3. **Estabelecimento de Relacionamentos:** Definição de como as tabelas se conectam e interagem entre si.
 
 ---
-
-
-Aqui está o tópico de Relacionamentos adicionado à estrutura da apostila, mantendo a formatação direta e técnica.
-
----
+___
 
 ## 6. Relacionamentos
 
@@ -140,7 +136,7 @@ A "ponte" entre as tabelas é construída através de chaves:
 
 **Cenário:** Sistema de Vendas Simples.
 **Entidades:** `Clientes` e `Pedidos`.
-**Relacionamento:** Um cliente pode fazer vários pedidos, mas um pedido pertence a um único cliente (1:N).
+**Relacionamento:** Um cliente pode fazer vários pedidos, mas um pedido pertence a um único cliente (1:N), veremos cardinalidade mais adiante.
 
 <img src="images/diagrama_relacionamento.png" alt="Diagrama de Relacionamento entre Clientes e Pedidos" width="400"/>
 
@@ -179,9 +175,7 @@ Define o número **mínimo** de instâncias que obrigatoriamente devem participa
 > **Importância:** Definir corretamente as cardinalidades (especialmente a máxima) é crucial para a fase de **Normalização** do banco de dados, evitando redundâncias e erros estruturais.
 
 
-## 6.3.2 Notação (Como Representar)
-
-Existem diversas formas de representar a cardinalidade em diagramas. As mais comuns citadas são:
+## 6.3.2 Notação 
 
 ### Notação de Peter Chen (Com parênteses)
 
@@ -198,21 +192,22 @@ Usa símbolos gráficos nas pontas das linhas de relacionamento:
 * **Círculo (O):** Representa "0".
 * **Pé de galinha (três traços):** Representa "Muitos" (N).
 
-## 4. Classificação dos Relacionamentos
+<img src="images/crows_foot_notation.png" alt="Notação Pé de Galinha" width="400"/>
 
-Com base na cardinalidade máxima, os relacionamentos são classificados em três tipos principais:
+fonte: https://medium.com/@callista.m.azizah/crows-foot-erd-for-beginners-a-tutorial-1effc8a326c6
 
-### 1. Relacionamento Um para Um (1:1)
+## 6.3.3 Classificação dos Relacionamentos
+
+### Relacionamento Um para Um (1:1)
 
 Uma instância da Entidade A se relaciona com **apenas uma** instância da Entidade B, e vice-versa.
 
 * *Exemplo:* **Professor** e **Armário**.
 * Um professor usa, no máximo, 1 armário.
-* Um armário é usado por, no máximo, 1 professor.
+* Um armário é usado, no máximo, por 1 professor.
 
 
-
-### 2. Relacionamento Um para Muitos (1:N)
+### Relacionamento Um para Muitos (1:N)
 
 Uma instância da Entidade A se relaciona com **várias** instâncias da Entidade B, mas uma instância da Entidade B se relaciona com **apenas uma** da Entidade A.
 
@@ -221,8 +216,7 @@ Uma instância da Entidade A se relaciona com **várias** instâncias da Entidad
 * Um departamento possui N (vários) funcionários.
 
 
-
-### 3. Relacionamento Muitos para Muitos (N:N)
+### Relacionamento Muitos para Muitos (N:N)
 
 Uma instância da Entidade A se relaciona com **várias** da Entidade B, e uma instância da Entidade B também se relaciona com **várias** da Entidade A.
 
@@ -235,11 +229,8 @@ Uma instância da Entidade A se relaciona com **várias** da Entidade B, e uma i
 > **Atenção Técnica:** Bancos de dados relacionais têm dificuldade em implementar relacionamentos **N:N** diretamente.
 > * *Solução:* Durante a modelagem, cria-se uma **Entidade Associativa** (uma nova tabela intermediária) para quebrar o relacionamento N:N em dois relacionamentos 1:N.
 > * *Exemplo:* Cria-se a entidade "Cliente_Pacote" entre Cliente e Pacote.
-> 
-> 
 
 ---
-
 
 ## 7. Restrições de Integridade
 
