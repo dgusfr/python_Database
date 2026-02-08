@@ -155,6 +155,34 @@ No diagrama a cima determinamos a relação entre a tabela `Clientes` à tabela 
 
 **Deseja adicionar o tópico sobre "Cardinalidade" (1:1, 1:N, N:N) agora para complementar este exemplo?**
 
+___
+___
+
+## 7. Restrições de Integridade
+
+
+### 7.1. O Que é Integridade de Dados?
+
+A integridade de dados refere-se à garantia da **consistência** e **precisão** dos dados armazenados em um banco de dados, através da aplicação de **Restrições de Integridade**.
+
+### 7.2. Tipos de Restrições de Integridade
+
+Existem cinco tipos principais de restrições que garantem a qualidade dos dados:
+
+1. Integridade de Domínio
+Define que os valores inseridos em uma coluna devem obedecer a uma definição, ou seja, se o campo é numérico, não pode aceitar texto ou datas, e é possível definir valores mínimos e máximos aceitáveis.
+
+2. Integridade Referencial
+Garante que um valor em uma coluna de **Chave Estrangeira** corresponda a um valor existente na coluna de **Chave Primária** da tabela relacionada.
+
+3. Integridade de Vazio (Nulos)
+Define se uma coluna pode ficar sem valor (NULL) ou se é obrigatória (NOT NULL).
+
+4. Integridade de Chave
+Define as necessidades de uma chave, ou seja, o valor da chave nunca pode se repetir na mesma tabela (ex: dois clientes não podem ter o mesmo código ID); uma chave primária **nunca** pode ser vazia (`NULL`).
+
+5. Integridade Definida pelo Usuário
+São restrições específicas baseadas em **Regras de Negócio** da empresa, que não são cobertas pelas regras padrão do banco de dados.
 
 
 
