@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
-from database import SessionLocal, engine
+from database import SessionLocal, engine, get_db
 from sqlalchemy.orm import Session
 
 from typing import List
