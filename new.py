@@ -85,3 +85,15 @@ with Session(engine) as session:
     ).first()  # first() é usado para retornar o primeiro resultado da consulta, nesse caso, o usuário Mary
     if mary:
         print(f"User found: {mary}")
+
+    # 4ª consulta, com Where e Order By, nesse caso, estamos buscando os posts do anthony, ordenando por id de forma decrescente
+    stmt = select(Post).where(Post.user == anthony).order_by(Post.id.desc())
+    posts = session.scalars(stmt).all()
+    for post in posts:
+        print(post)
+        print(f"Author: {post.user.name}")
+
+
+# Diferença entre versão antiga do SQLAlchemy e a nova versão:
+# Na versão antiga, as colunas eram definidas usando o tipo de dado diretamente, como Integer, String, etc. Já na nova versão, as colunas são definidas usando o tipo de dado do campo, como Mapped[int], Mapped[str], etc.
+# A nova versão as consultas são definidas independentemente da sessão e depois executadas usando a sessão, enquanto na versão antiga as consultas eram definidas diretamente na sessão.
