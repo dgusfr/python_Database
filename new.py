@@ -64,7 +64,7 @@ with Session(engine) as session:
 
     # Consultando os usuários
     stmt = select(User)
-    # scalars é usado para retornar os objetos do tipo User, e all() é usado para retornar todos os resultados da consulta
+    # scalars é usado para retornar os objetos do tipo User, e all() é usado para retornar todos os resultados da consulta, ou seja, todos os usuarios
     users = session.scalars(stmt).all()
     for user in users:
         print(user)
