@@ -70,3 +70,18 @@ with Session(engine) as session:
         print(user)
         for post in user.posts:
             print(post)
+
+    # 2ª consulta, por id
+    anthony = session.get(
+        User, 1
+    )  # get é usado para buscar um objeto pelo seu id, nesse caso, o id do anthony é 1
+    if anthony:
+        print(anthony)
+
+    # 3ª consulta, com Where
+    stmt = select(User).where(User.name == "Mary")
+    mary = session.scalars(
+        stmt
+    ).first()  # first() é usado para retornar o primeiro resultado da consulta, nesse caso, o usuário Mary
+    if mary:
+        print(f"User found: {mary}")
