@@ -289,9 +289,79 @@ Define as necessidades de uma chave, ou seja, o valor da chave nunca pode se rep
 5. Integridade Definida pelo Usuário
 São restrições específicas baseadas em **Regras de Negócio** da empresa, que não são cobertas pelas regras padrão do banco de dados.
 
+____
+<br>
+<br>
 
 
 
+# Normalização de Dados 
+
+## 1. Introdução à Primeira Forma Normal (1FN)
+
+A normalização é o processo de organização de dados em um banco de dados, garantindo que as tabelas sejam eficientes e livres de redundâncias básicas.
+
+### Requisitos para estar na 1FN
+
+Para dizermos que uma tabela está na Primeira Forma Normal, ela deve obedecer às seguintes regras:
+
+1. **Atomicidade:** A tabela deve conter apenas valores atômicos (indivisíveis). Representa o nível mais baixo de detalhamento necessário para o sistema.
+      * *Exemplo de Atômico:* "João" (Nome), "Silva" (Sobrenome).
+      * *Exemplo Não-Atômico:* "João Silva" (Nome Completo - pode ser dividido).
+
+2. **Sem Atributos Multivalorados:** É quando um único campo armazena mais de um valor para o mesmo registro.
+      * *Exemplo:* O cliente "José" tem dois números de celular armazenados na mesma célula: `(11) 99999-1111, (11) 98888-2222`. Isso viola a 1FN.
+
+3. **Sem Grupos Repetidos:** Não deve haver colunas repetidas para armazenar o mesmo tipo de dado (ex: Telefone1, Telefone2, Telefone3).
+
+4. **Chave Primária:** A tabela deve possuir uma Chave Primária definida.
+
+5. **Sem Relações Aninhadas:** Não deve haver tabelas dentro de tabelas (estruturas complexas não relacionais).
+
+
+
+### Exemplo Prático de Normalização
+
+#### Cenário Inicial (Tabela Não Normalizada)
+
+Imagine a tabela `TBL_CLIENTE` com os seguintes problemas:
+
+| Código | Nome | Telefone  | Endereço  |
+| --- | --- | --- | --- |
+| 1 | José | 9999-1111, 8888-2222 | Rua A, 23, Centro |
+| 2 | Marcos | 7777-3333 | Av. B, 100, Jardins |
+
+**Problemas Identificados:**
+
+1. **Telefone:** José tem dois números na mesma célula.
+2. **Endereço:** Contém rua, número e bairro misturados. Dados Compostos.
+
+___
+
+#### Aplicando 1FN 
+
+**Ação 1: Decompor Atributos Compostos**
+O campo `Endereço` é dividido em colunas específicas na tabela original.
+
+**Ação 2: Remover Atributos Multivalorados (Criar Nova Tabela)**
+Os telefones são removidos da tabela de clientes e colocados em uma nova tabela específica, criando um relacionamento de 1 para Muitos (1:N).
+
+#### Resultado Final:
+
+**Tabela: Clientes (Normalizada)**
+| Código | Nome | Rua | Número | Bairro |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | José | Rua A | 23 | Centro |
+| 2 | Marcos | Av. B | 100 | Jardins |
+
+**Tabela: Telefones (Nova Tabela)**
+| Código_Cliente (FK) | Telefone |
+| :--- | :--- |
+| 1 | 9999-1111 |
+| 1 | 8888-2222 |
+| 2 | 7777-3333 |
+
+> **Nota:** Agora, cada dado é atômico e não há multivaloração. A integridade é mantida através do relacionamento entre as tabelas.
 
 
 
