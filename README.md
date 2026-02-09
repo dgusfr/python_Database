@@ -363,6 +363,64 @@ Os telefones são removidos da tabela de clientes e colocados em uma nova tabela
 
 > **Nota:** Agora, cada dado é atômico e não há multivaloração. A integridade é mantida através do relacionamento entre as tabelas.
 
+___
+___
+
+## 2. Introdução à Segunda Forma Normal (2FN)
+
+A **Segunda Forma Normal (2FN)** é o passo seguinte no processo de normalização. Ela lida especificamente com problemas de redundância causados por dependências parciais dentro de tabelas que possuem Chaves Primárias Compostas.
+Uma tabela está na 2FN se, e somente se:
+
+1. Estiver na 1FN.
+2. Todos os atributos não-chave forem **totalmente dependentes** de toda a Chave Primária.
+3. Não podem existir **Dependência Parcial**, caso exista será necessário gerar uma nova tabela com os dados.
+
+> **Simplificando:** A dependência parcial ocorre quando um atributo não-chave é determinado por apenas uma parte da chave primária composta, e não por ela inteira.
+
+* **Exemplo Teórico:** Imagine uma chave composta por `(A, B)`.
+* Se tivermos um campo `C` que depende apenas de `A`, temos uma dependência parcial. Isso viola a 2FN.
+* Se tivermos um campo `D` que depende de `A` + `B` juntos, temos dependência total. Isso está correto na 2FN.
+
+
+
+### Exemplo Prático de Aplicação
+
+#### Tabela Não Normalizada na 2FN
+
+Imagine a tabela `TBL_PEÇAS` com uma **Chave Primária Composta** formada por `Cód_Peça` + `Cód_Fornecedor`.
+
+| **Cód_Peça (PK)** | **Cód_Fornecedor (PK)** | Local_Fornecedor | Qtd_Estoque | Telefone_Fornecedor |
+| --- | --- | --- | --- | --- |
+| 10 | 500 | São Paulo | 100 | 5555-1234 |
+| 20 | 500 | São Paulo | 200 | 5555-1234 |
+
+**Análise das Dependências:**
+
+1. **Local_Fornecedor:** Depende de quem? Apenas do `Cód_Fornecedor`. Não depende da peça. (Viola a 2FN - Dependência Parcial).
+2. **Telefone_Fornecedor:** Depende de quem? Apenas do `Cód_Fornecedor`. (Viola a 2FN - Dependência Parcial).
+3. **Qtd_Estoque:** Depende de quem? Depende da combinação específica da `Peça` naquele `Fornecedor`. (Está correto - Dependência Total).
+
+#### **Aplicação da 2FN (Solução)**
+
+Para resolver, devemos remover os atributos que têm dependência parcial e movê-los para uma nova tabela, onde a parte da chave da qual eles dependem se tornará a Chave Primária.
+
+**Tabela: Peças_Estoque (Mantém a chave composta e dependentes totais)**
+| **Cód_Peça (FK)** | **Cód_Fornecedor (FK)** | Qtd_Estoque |
+| :--- | :--- | :--- |
+| 10 | 500 | 100 |
+| 20 | 500 | 200 |
+
+**Tabela: Fornecedores (Nova tabela para os dados do fornecedor)**
+| **Cód_Fornecedor (PK)** | Local_Fornecedor | Telefone_Fornecedor |
+| :--- | :--- | :--- |
+| 500 | São Paulo | 5555-1234 |
+
+> **Nota:** Agora, `Local` e `Telefone` dependem totalmente da chave `Cód_Fornecedor` na nova tabela. Na tabela original, ficou apenas `Qtd_Estoque`, que realmente depende da combinação `Peça` + `Fornecedor`.
+
+
+* **Melhor Prática:** Campos que podem ser calculados a partir de outros dados geralmente não devem ser armazenados no banco. Eles podem ser gerados em tempo de execução (na consulta SQL ou na aplicação), economizando espaço e evitando inconsistências.
+
+---
 
 
 
